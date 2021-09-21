@@ -1,17 +1,4 @@
-/* Add some margin to the page and set a default font and colour */
 
-body {
-  margin: 30px;
-  font-family: "Georgia", serif;
-  line-height: 1.8em;
-  color: #333;
-}
-
-/* Give headings their own font */
-
-h1, h2, h3, h4 {
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-}
 
 /* Main content area */
 
