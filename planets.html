@@ -31,10 +31,10 @@ function init() {
   $('#cardSlots').html( '' );
 
   // Create the pile of shuffled cards
-  var numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
+  var numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
   numbers.sort( function() { return Math.random() - .5 } );
 
-  for ( var i=0; i<10; i++ ) {
+  for ( var i=0; i<9; i++ ) {
     $('<div>' + numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'card'+numbers[i] ).appendTo( '#cardPile' ).draggable( {
       containment: '#content',
       stack: '#cardPile div',
@@ -44,8 +44,8 @@ function init() {
   }
 
   // Create the card slots
-  var words = [ 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten' ];
-  for ( var i=1; i<=10; i++ ) {
+  var words = [ 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine' ];
+  for ( var i=1; i<=9; i++ ) {
     $('<div>' + words[i-1] + '</div>').data( 'number', i ).appendTo( '#cardSlots' ).droppable( {
       accept: '#cardPile div',
       hoverClass: 'hovered',
@@ -95,8 +95,7 @@ function handleCardDrop( event, ui ) {
 <body>
 
 <div class="wideBox">
-  <h1>Drag-and-Drop with jQuery: Your Essential Guide</h1>
-  <h2>A Number Cards Game</h2>
+  <h1>Drag-and-Drop The planets in order</h1>
 </div>
 
 <div id="content">
@@ -112,8 +111,7 @@ function handleCardDrop( event, ui ) {
 </div>
 
 <div class="wideBox">
-  <p>&copy; Elated.com | <a href="https://www.elated.com/articles/drag-and-drop-with-jquery-your-essential-guide/">Back to Tutorial</a></p>
-  <p style="font-size: .8em; line-height: 1.5em;"><a rel="license" href="https://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This <span xmlns:dc="https://purl.org/dc/elements/1.1/" href="https://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="https://creativecommons.org/ns#" href="https://www.elated.com/" property="cc:attributionName" rel="cc:attributionURL">https://www.elated.com/</a> is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.</p>
+  <p>&copy; Genex.space</p>
 </div>
 
 </body>
