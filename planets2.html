@@ -41,7 +41,7 @@ function init() {
   numbers.sort( function() { return Math.random() - .5 } );
 
   for ( var i=0; i<6; i++ ) {
-    $('<div><img src="https://place-hold.it/50x50/000/fff&text=' + numbers[i] + '"></div>').data( 'number', numbers[i] ).attr( 'id', 'card'+numbers[i] ).appendTo( '#AllCardsList' ).draggable( {
+    $('<div><img src="./assets/img/select/' + numbers[i] + '.jpg"></div>').data( 'number', numbers[i] ).attr( 'id', 'card'+numbers[i] ).appendTo( '#AllCardsList' ).draggable( {
       containment: '#content',
       stack: '#AllCardsList div',
       cursor: 'move',
@@ -51,6 +51,8 @@ function init() {
 
   // Create the card slots
   var words = [ "Sun", "Moon", "Earth", "Saturn", "Rocket", "Galaxy" ];
+  words.sort( function() { return Math.random() - .7 } );
+
   for ( var i=1; i<=6; i++ ) {
     $('<div>' + words[i-1] + '</div>').data( 'number', words[i-1] ).appendTo( '#cardSlots' ).droppable( {
       accept: '#AllCardsList div',
@@ -72,17 +74,18 @@ function handleCardDrop( event, ui ) {
 
   if ( slotNumber == cardNumber ) {
     ui.draggable.addClass( 'correct' );
-    ui.draggable.draggable( 'disable' );
+    //ui.draggable.draggable( 'disable' );
     $(this).droppable( 'disable' );
     ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
     ui.draggable.draggable( 'option', 'revert', false );
     correctCards++;
+    console.log(correctCards);
   } 
   
   // If all the cards have been placed correctly then display a message
   // and reset the cards for another go
 
-  if ( correctCards == 10 ) {
+  if ( correctCards == 6 ) {
     $('#successMessage').show();
     $('#successMessage').animate( {
       left: '380px',
@@ -102,8 +105,8 @@ function handleCardDrop( event, ui ) {
  </div> 
 <div id="content" class="container col-md-8 mx-auto">
 
-  <div id="AllCardsList" class="card-group my-2"> </div>
-  <div id="cardSlots"> </div>
+  <div id="AllCardsList" class="card-group my-2 text-center flex-container space-between"> </div>
+  <div id="cardSlots" class="flex-container space-between"> </div>
 
   <div id="successMessage">
     <h2>You did it!</h2>

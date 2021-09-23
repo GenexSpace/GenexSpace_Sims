@@ -44,7 +44,7 @@
 
 #cardSlots, #cardPile {
   width: 910px;
-  height: 120px;
+  height: 150px;
   padding: 20px;
   border: 2px solid #333;
   -moz-border-radius: 10px;
@@ -59,9 +59,8 @@
 
 #cardSlots div, #cardPile div {
   float: left;
-  width: 58px;
-  height: 78px;
-  padding: 10px;
+  width: 100px;
+  height: 100px;
   padding-top: 40px;
   padding-bottom: 0;
   border: 2px solid #333;
@@ -70,8 +69,8 @@
   border-radius: 10px;
   margin: 0 0 0 10px;
   background: #fff;
-}
 
+}
 #cardSlots div:first-child, #cardPile div:first-child {
   margin-left: 0;
 }
@@ -99,16 +98,7 @@
 
 /* Individually coloured cards */
 
-#card1.correct { background: red; }
-#card2.correct { background: brown; }
-#card3.correct { background: orange; }
-#card4.correct { background: yellow; }
-#card5.correct { background: green; }
-#card6.correct { background: cyan; }
-#card7.correct { background: blue; }
-#card8.correct { background: indigo; }
-#card9.correct { background: purple; }
-#card10.correct { background: violet; }
+.correct { border-color: green; }
 
 
 /* "You did it!" message */
@@ -130,4 +120,14 @@
   padding: 20px;
 }
 
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+}
+.space-between { 
+  justify-content: space-between; 
+}  
 
