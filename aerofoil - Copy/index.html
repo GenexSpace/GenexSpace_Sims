@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset = "utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <link rel = "stylesheet" href = "./style.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src = "./FoilSim_Calculations.js"></script>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src = "./GUIComponents.js"></script>
+    <script src = "./particle.js"></script>
+    <script src = "./drawFoil.js"></script>
+    <script src = "./foilSimObjects.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>AeroFoil Sim</title>
+</head>
+<body onload = "defaultTextValues();">
+
+    <div class = "container">
+<div class="row">
+
+    <div id = "airFoilSketch-holder" class = "col-md-6">
+
+
+
+
+    </div>
+    <div class = "col-md-6" id = "box2">
+
+        <label style = "font-weight:bold">Aerofoil Sim</label>
+
+        <button id = "reset" class="btn btn-primary" onclick = "reset()" value = "reset"> Reset</button>
+
+    </br>
+    </br>
+
+        <label style = "color:black">DOWN button </label>
+        <label>DECREASES</label>
+        <label>Input VALUE</label>
+
+     </br>
+    </br>
+
+        <label>UP button</label>
+        <label>INCREASES</label>
+        <label>Input VALUE</label>
+
+    </br>
+    </br>
+
+        <label>Lift</label>
+        <input id = "liftBox" style = "width:80px" type = "text" class="liftBox">
+        <label>lbs</label>
+        &nbsp;
+        &nbsp;
+        <label>Drag</label>
+        <input id ="dragBox" style = "width:80px" type = "text" class="dragBox">
+        <label>lbs</label>
+
+
+</br>
+
+        <label>CLift</label>
+        <input id = "cLiftBox" style = "width:70px" type = "text" class="cLiftBox">
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <label>CDrag</label>
+        <input id ="cDragBox" style = "width:80px" type = "text" class="cDragBox">
+
+
+
+
+    </div>
+</div>
+<div class="row">
+    <div class = "col-md-6" id = "box3" >
+
+            <label style = "color:#003CFF;font-weight:bold">Variable</label>
+            <label style = "color:#003CFF;padding-left:2em;font-weight:bold">Value</label>
+            <label style = "color:#003CFF;padding-left:1.5em;font-weight:bold">DOWN</label>
+            <label style = "color:#003CFF;padding-left:1em;font-weight:bold">UP</label>
+    </br>
+    </br>
+            <label>Speed</label>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <input id = "speedText" style = "width:100%;padding-right: 40px" type = "text" name = "speedValue" value = "100">
+            <button class="btn btn-danger downSpeed"  onclick = "speedValueDown()"  type = "button" name = "downSpeed" value="Down">Down</button>
+            &nbsp;
+            <button onclick = "speedValueUp()" type = "button" name = "upSpeed" value="Up" class="btn btn-success upSpeed" >Up</button>
+            <label id = "unitsLabel">mph</label>
+
+    </br>
+    </br>
+
+            <label>Altitude</label>
+            &nbsp;
+            &nbsp;
+            <input id = "altitudeText" style = "width:20%;padding-right:10px" type = "text" name = "altitudeValue" value = "0">
+            <input onclick = "altitudeDown()" type = "button" name = "downAlt" value="Down" class="downAlt">
+            &nbsp;
+            <input onclick = "altitudeUp()" type = "button" name = "upAlt" value="Up" class="upAlt">
+            <label id = "unitsLabel">ft</label>
+
+    </br>
+    </br>
+
+            <label>Angle</label>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <input id = "angleText" style = "width:10%;padding-right: 40px" type = "text" name = "angleValue" value = "5">
+            <input onclick = "angleDown()" type = "button" name = "downAngle" value="Down" class="downAngle">
+            &nbsp;
+            <input onclick = "angleUp()" type = "button" name = "upAngle" value="Up" class="upAngle">
+            <label id = "unitsLabel">deg</label>
+
+    </br>
+    </br>
+
+            <label>Camber</label>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <input id = "camberText" style = "width:20%;padding-right: 10px" type = "text" name = "camberValue" value = "0">
+            <input onclick = "camberDown()" type = "button" name = "camberSpeed" value="Down" class="downCamber">
+            &nbsp;
+            <input onclick= "camberUp()" type = "button" name = "camberSpeed" value="Up" class="upCamber">
+            <label id = "unitsLabel">%</label>
+
+
+     </br>
+    </br>
+
+
+             <label>Thickness</label>
+            &nbsp;
+            <input id = "thicknessText" style = "width:10%;padding-right: 40px" type = "text" name = "thicknessValue" value = "12">
+            <input onclick = "thicknessDown()" type = "button" name = "downThickness" value="Down" class="downThickness">
+            &nbsp;
+            <input onclick = "thicknessUp()" type = "button" name = "upThickness" value="Up" class="upThickness">
+            <label id = "unitsLabel">%</label>
+
+
+        </br>
+    </br>
+
+
+             <label>Wing Area</label>
+            &nbsp;
+            <input id = "wingText" style = "width:20%;padding-right: 5px" type = "text" name = "areaValue" value = "100.0">
+            <input onclick = "wAreaDown()" type = "button" name = "downArea" value="Down" class="downArea">
+            &nbsp;
+            <input onclick = "wAreaUp()" type = "button" name = "upArea" value="Up" class="upArea">
+            <label id = "unitsLabel">sqft</label>
+
+        </br>
+    </br>
+
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+
+
+
+
+
+    </div>
+
+    <div id = "tester" class = "box4 col-md-5" id = "box4" >
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>
