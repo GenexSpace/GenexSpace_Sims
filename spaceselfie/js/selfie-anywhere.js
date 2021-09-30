@@ -81,7 +81,7 @@ function startDetectBody() {
 function detectBody(){
     net.segmentPerson(webcamElement,  {
         flipHorizontal: false,
-        internalResolution: 'medium',
+        internalResolution: 'high',
         segmentationThreshold: segmentationThreshold
       })
     .catch(error => {
